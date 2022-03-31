@@ -22,7 +22,7 @@ module.exports = {
       arrowFunctions: true,
     },
   },
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react","react-hooks", "@typescript-eslint", "prettier"],
   settings: {
     react: {
       version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
@@ -35,6 +35,8 @@ module.exports = {
     },
   },
   rules: {
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
     "comma-dangle": "off", // https://eslint.org/docs/rules/comma-dangle
     "function-paren-newline": "off", // https://eslint.org/docs/rules/function-paren-newline
     "global-require": "off", // https://eslint.org/docs/rules/global-require
@@ -43,7 +45,14 @@ module.exports = {
     "class-methods-use-this": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-var-requires": "off",
+    'prettier/prettier': [
+      'error',
+      {
+        'endOfLine': 'auto',
+      }
+    ]
   },
 };
