@@ -1,3 +1,6 @@
+.skeleton {
+    overflow: hidden;
+}
 .skeleton::after {
     content: " ";
     box-shadow: 0 0 50px 9px rgba(254,254,254);

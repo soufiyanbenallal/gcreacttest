@@ -5,6 +5,7 @@ export interface IApiService {
 
 export interface IHelpersService {
   classNames: (...val: string[]) => string;
+  getDirection: (angle: number) => string;
 }
 
 export interface IAppContext {

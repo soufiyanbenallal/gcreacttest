@@ -18,7 +18,7 @@ export default function SelectCountry({ options, onChange, loading }: ISelectCou
   });
   const { helpers } = useContext<IAppContext>(AppContext);
   const { classNames }: IHelpersService = helpers;
-  console.log("options", options[1]);
+  // console.log("options", options[1]);
   const handleSelect = useCallback((val: any) => {
     onChange(val);
     setSelected(val);
