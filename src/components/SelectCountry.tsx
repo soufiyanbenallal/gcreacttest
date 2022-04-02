@@ -1,41 +1,46 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-import { IAppContext } from "../interfaces";
+import { IAppContext, IHelpersService } from "../interfaces";
 import { AppContext } from "../context/AppContext";
-import ApiService from "../services/api.service";
-const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-  { id: 7, name: "Caroline Schultz" },
-  { id: 8, name: "Mason Heaney" },
-  { id: 9, name: "Claudie Smitham" },
-  { id: 10, name: "Emil Schaefer" },
-];
-const api = new ApiService();
-export default function SelectCountry() {
-  const [selected, setSelected] = useState(people[1]);
-  const [options, setOptions] = useState([]);
-  const { classNames } = useContext<IAppContext>(AppContext);
-  console.log("rendrings");
-  useEffect(() => {
-    api.fetchAllCountries().then(res => {
-      console.log(res);
-      setOptions(res);
-    });
-  }, [selected]);
+
+export interface ISelectCountryProps {
+  options: any[];
+  onChange: (val: any) => void;
+  loading: boolean;
+}
+
+export default function SelectCountry({ options, onChange, loading }: ISelectCountryProps) {
+  const [selected, setSelected] = useState({
+    name: {
+      common: "Select a country",
+    },
+  });
+  const { helpers } = useContext<IAppContext>(AppContext);
+  const { classNames }: IHelpersService = helpers;
+  console.log("options", options[1]);
+  const handleSelect = useCallback((val: any) => {
+    onChange(val);
+    setSelected(val);
+  }, []);
+
+  if (loading) {
+    return (
+      <>
+        <h3 className="block  text-sm font-medium text-gray-100 max-w-xs w-full">Countries</h3>
+        <div className="skeleton mr-2 h-10 w-full rounded-md overflow-hidden relative bg-gray-200 mt-1"></div>;
+      </>
+    );
+  }
+
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selected} onChange={handleSelect}>
       {({ open }) => (
         <>
           <Listbox.Label className="block text-sm font-medium text-gray-100 max-w-xs w-full">Countries</Listbox.Label>
-          <div className="mt-1 relative">
-            <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <span className="block truncate">{selected.name}</span>
+          <div className="mt-1 relative z-50">
+            <Listbox.Button className="relative h-10 w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <span className="block truncate">{selected.name.common}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>

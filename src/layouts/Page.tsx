@@ -1,10 +1,12 @@
 import React from "react";
+import HeaderPage from "../components/HeaderPage";
 
-export default function Page({ children }: { children: React.ReactNode }) {
+export default function Page({ children, actions, title }: { children: React.ReactNode; actions?: any; title?: string }) {
   return (
-    <main className="w-full relative -mt-32">
-      <div className="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
-        <div className="bg-white rounded-lg shadow overflow-hidden">{children}</div>
+    <main className="w-full relative ">
+      <HeaderPage title={title} actions={actions} />
+      <div className="-mt-24 max-w-7xl mx-auto relative z-10 pb-24 px-4 sm:px-6 lg:px-8" aria-labelledby="contact-heading">
+        {children}
       </div>
     </main>
   );

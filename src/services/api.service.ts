@@ -31,7 +31,7 @@ export default class ApiService implements IApiService {
     return this.get("", this.apiUrlCountries);
   };
 
-  public fetchTemperature = (lat: number, lon: number): Promise<any> => {
-    return this.get(`forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
+  public fetchWeather = (lat: number, lon: number): Promise<any> => {
+    return this.get(`weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
   };
 }
