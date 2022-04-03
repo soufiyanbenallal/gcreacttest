@@ -1,7 +1,8 @@
 import React from "react";
 import HeaderPage from "../components/HeaderPage";
+import { IPageProps } from "../interfaces";
 
-export default function Page({ children, actions, title }: { children: React.ReactNode; actions?: any; title?: string }) {
+export default function Page({ children, actions, title }: IPageProps) {
   return (
     <main className="w-full relative ">
       <HeaderPage title={title} actions={actions} />

@@ -1,5 +1,5 @@
 import React from "react";
-
+// Tempreture Icon
 export function TempretureIcon({ className = "w-6" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className || ""} viewBox="0 0 512 512">
@@ -11,6 +11,8 @@ export function TempretureIcon({ className = "w-6" }: { className?: string }) {
     </svg>
   );
 }
+
+// Pressure Icon
 export function PressureIcon({ className = "w-6" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className || ""} viewBox="0 0 512 512">
@@ -22,6 +24,8 @@ export function PressureIcon({ className = "w-6" }: { className?: string }) {
     </svg>
   );
 }
+
+// Wind Icon
 export function WindIcon({ className = "w-6" }: { className?: string }) {
   return (
     <svg
@@ -42,6 +46,7 @@ export function WindIcon({ className = "w-6" }: { className?: string }) {
   );
 }
 
+// humidity Icon
 export function HumidityIcon({ className = "w-6" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className || ""} viewBox="0 0 512 512">
@@ -54,6 +59,7 @@ export function HumidityIcon({ className = "w-6" }: { className?: string }) {
   );
 }
 
+// direction icon
 export function DirectionIcon({ className = "w-6" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className || ""} viewBox="0 0 512 512">

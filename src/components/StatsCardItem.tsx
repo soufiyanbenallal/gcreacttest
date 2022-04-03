@@ -1,14 +1,6 @@
 import React from "react";
-export interface IStatsCardItemProps {
-  item: {
-    symbol: string;
-    value: string | number;
-    icon: React.ReactNode;
-    body?: React.ReactNode;
-    footer?: React.ReactNode;
-  };
-  title: string;
-}
+import { IStatsCardItemProps } from "../interfaces";
+
 export default function StatsCardItem({ item, title }: IStatsCardItemProps) {
   return (
     <div className="px-4 py-2 sm:px-4 sm:py-3">
